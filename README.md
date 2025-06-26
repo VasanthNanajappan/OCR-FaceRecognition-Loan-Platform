@@ -48,28 +48,28 @@ Here is a high-level component diagram illustrating the system's architecture:
          |                                          |                                       |
          |         +-------------------+            |         +---------------------+       |
          |         |                   |            |         |                     |       |
-         |         |   Flask Backend   |<--------------------->| Database Connector  |       |
+         |         |   Flask Backend   |<--------------------->| Database Connector |       |
          |         | - Core Logic      |            |         | (mysql.connector)   |       |
          |         | - API Endpoints   |            |         +---------+-----------+       |
-         |         +---------+---------+            |                   | SQL                 |
-         |                   |                        |                   |                     |
-         |                   | Calls Modules          |                   v                     |
-         |                   |                        |         +-----------------------+     |
-         |        +----------+----------+             |         |  Loan Verification DB   |     |
-         |        | Face Recognition    |             |         | (Tables: regtb, loantb, |     |
-         |        | (Luxand FaceSDK)    |             |         |   temptb, etc.)       |     |
-         |        +---------------------+             |         +-----------------------+     |
-         |                   |                        |
-         |                   |                        |
-         |        +----------+----------+             |
-         |        |     OCR Module      |             |
-         |        | (EasyOCR, OpenCV)   |             |
-         |        +---------------------+             |
-         |                   |                        |
-         |                   |                        |
-         |        +----------+----------+             |
+         |         +---------+---------+            |                   | SQL               |
+         |                   |                      |                   |                   |
+         |                   | Calls Modules        |                   v                   |
+         |                   |                      |         +-----------------------+     |
+         |        +----------+----------+           |         |  Loan Verification DB   |   |
+         |        | Face Recognition    |           |         | (Tables: regtb, loantb, |   |
+         |        | (Luxand FaceSDK)    |           |         |   temptb, etc.)       |     |
+         |        +---------------------+           |         +-----------------------+     |
+         |                   |                      |
+         |                   |                      |
+         |        +----------+----------+           |
+         |        |     OCR Module      |           |
+         |        | (EasyOCR, OpenCV)   |           |
+         |        +---------------------+           |
+         |                   |                      |
+         |                   |                      |
+         |        +----------+----------+           |
          |        |  Email/SMS Notif.   |<--------------------+--------------------+
-         |        |  (smtplib, requests)|             |       | External APIs      |
+         |        |  (smtplib, requests)|           |         | External APIs      |
          |        +---------------------+                     | (Email/SMS Gateways) |
          |                                                    +--------------------+
 ```
@@ -131,22 +131,3 @@ The application should now be accessible in your web browser at `http://127.0.0.
   * **Admin Login**: Navigate to `/AdminLogin`. (Check `1loanverficationdb.sql` for default admin credentials if any).
   * **User Login/Registration**: Navigate to `/UserLogin` or `/NewUser`. Follow the prompts for registration, which will involve live face verification.
   * Explore the various functionalities for loan application, status tracking, and admin management.
-
-## Future Enhancements
-
-  * **Containerization**: Implement Docker for easier deployment and environment consistency.
-  * **Cloud Deployment**: Deploy the application on a cloud platform (AWS, Azure, GCP).
-  * **Enhanced Security**: Implement environment variables for sensitive credentials (database, API keys) instead of hardcoding. Add robust input validation and error handling.
-  * **Improved UI/UX**: Modernize the frontend design for a more intuitive user experience.
-  * **Testing**: Implement unit and integration tests for core functionalities.
-  * **API for External Services**: Develop a RESTful API for external systems to interact with the loan management system.
-  * **Robust Logging**: Implement a comprehensive logging strategy.
-
-## Contribution
-
-Contributions are welcome\! Please feel free to fork the repository, make your changes, and submit a pull request.
-
-## License
-
-This project is open-source. Please refer to the `LICENSE` file for details.
-*(If you don't have a LICENSE file, consider adding one, e.g., MIT, Apache 2.0.)*
